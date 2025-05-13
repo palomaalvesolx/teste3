@@ -58,6 +58,8 @@ export const TarotProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const proceedToNextStep = useCallback(() => {
     setCurrentCard(null);
+    // Shuffle the remaining cards before proceeding to the next step
+    setCards(prevCards => shuffleArray([...prevCards]));
     setReadingStep(current => {
       switch (current) {
         case 'first':
